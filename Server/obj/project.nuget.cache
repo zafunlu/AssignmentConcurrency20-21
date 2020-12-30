@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "iNMQ30kSnj7lIuAdRwTwUg/GOZvGzne8Z7aIQiA4WJCgM0nmCITeeoGpuAfClPMvAkEytJiY1sljC1p+IuQbIA==",
+  "success": true,
+  "projectFilePath": "/Users/zunlu/Programming/AssignmentConcurrency20-21/Server/Server.csproj",
+  "expectedPackageFiles": [
+    "/Users/zunlu/.nuget/packages/system.text.json/4.7.0/system.text.json.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
