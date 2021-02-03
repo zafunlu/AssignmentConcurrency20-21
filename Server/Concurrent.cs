@@ -34,7 +34,7 @@ namespace Concurrent
                     var t = new Thread(() => {
                         handleClient(connection);
                     });
-                    t.Start(connection);
+                    t.Start();
                     workerThreads.Add(t);
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }

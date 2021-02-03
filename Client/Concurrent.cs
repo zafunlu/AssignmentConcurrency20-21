@@ -21,8 +21,8 @@ namespace Concurrent
 
             cmd = votingList[rnd.Next(votingList.Length)];
             cmd_message = "ClientId="+client_id.ToString()+settings.command_msg_sep+cmd;
-            prepareClient();
-            communicate();
+            this.prepareClient();
+            this.communicate();
         }
     }
     public class ConcurrentClientsSimulator : SequentialClientsSimulator
