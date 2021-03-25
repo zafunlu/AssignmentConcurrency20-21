@@ -31,7 +31,7 @@ namespace Concurrent
                 listener.Bind(localEndPoint);
                 listener.Listen(settings.serverListeningQueue);
                 Console.WriteLine("Waiting for incoming connections ... ");
-                while (true)
+                while (!(this.numOfClients == this.settings.experimentNumberOfClients))
                 {
                     Socket connection = listener.Accept();
                     this.numOfClients++;
@@ -40,6 +40,9 @@ namespace Concurrent
                     });
                     t.Start();
                     workerThreads.Add(t);
+                    if(this.numOfClients == this.settings.experimentNumberOfClients) {
+                        int highestVotedValue = votesList.Values.Max();
+                    }
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
         }
@@ -51,12 +54,7 @@ namespace Concurrent
             this.sendMessage(con, Message.ready);
             int numByte = con.Receive(bytes);
             data = Encoding.UTF8.GetString(bytes, 0, numByte);
-            // if (!votesList.ContainsKey(data)) {
-            //     votesList.Add(data, 1);
-            // }
-            // else {
-                
-            // }
+
             string vote = data.Substring(data.IndexOf('>') + 1);
             bool added = votesList.TryAdd(vote, 1);
             if(!added) {
@@ -66,12 +64,11 @@ namespace Concurrent
             this.sendMessage(con, reply);
             
             
-            Console.WriteLine(votesList[vote]);
-            Console.WriteLine(from x in votesList where x.Value == votesList.Max(v => v.Value) select x.Key);
         }
         public override string processMessage(String msg)
         {
             string replyMsg = Message.confirmed;
+            
 
             try
             {
