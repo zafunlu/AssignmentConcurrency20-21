@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "/Users/zunlu/Programming/AssignmentConcurrency20-21/Client/Client.csproj": {}
+    "/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Client/Client.csproj": {}
   },
   "projects": {
-    "/Users/zunlu/Programming/AssignmentConcurrency20-21/Client/Client.csproj": {
+    "/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Client/Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/zunlu/Programming/AssignmentConcurrency20-21/Client/Client.csproj",
+        "projectUniqueName": "/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Client/Client.csproj",
         "projectName": "Client",
-        "projectPath": "/Users/zunlu/Programming/AssignmentConcurrency20-21/Client/Client.csproj",
+        "projectPath": "/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Client/Client.csproj",
         "packagesPath": "/Users/zunlu/.nuget/packages/",
-        "outputPath": "/Users/zunlu/Programming/AssignmentConcurrency20-21/Client/obj/",
+        "outputPath": "/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Client/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "/Users/zunlu/.nuget/NuGet/NuGet.Config"
         ],
@@ -59,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.406/RuntimeIdentifierGraph.json"
         }
       }
     }

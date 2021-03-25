@@ -10,3 +10,15 @@
 /Users/zunlu/Programming/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.dll
 /Users/zunlu/Programming/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.pdb
 /Users/zunlu/Programming/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.genruntimeconfig.cache
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/bin/Debug/netcoreapp3.1/Server.deps.json
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/bin/Debug/netcoreapp3.1/Server.runtimeconfig.json
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/bin/Debug/netcoreapp3.1/Server.runtimeconfig.dev.json
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/bin/Debug/netcoreapp3.1/Server.dll
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/bin/Debug/netcoreapp3.1/Server.pdb
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.csprojAssemblyReference.cache
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.AssemblyInfoInputs.cache
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.AssemblyInfo.cs
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.csproj.CoreCompileInputs.cache
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.dll
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.pdb
+/Users/zunlu/Programming/School/AssignmentConcurrency20-21/Server/obj/Debug/netcoreapp3.1/Server.genruntimeconfig.cache

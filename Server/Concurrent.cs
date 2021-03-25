@@ -2,6 +2,7 @@ using Sequential;
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 //todo [Assignment]: add required namespaces
@@ -38,6 +39,17 @@ namespace Concurrent
                     workerThreads.Add(t);
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
+        }
+        new public void handleClient(Socket con)
+        {
+            string data = "", reply = "";
+            byte[] bytes = new byte[bufferSize];
+
+            this.sendMessage(con, Message.ready);
+            int numByte = con.Receive(bytes);
+            data = Encoding.UTF8.GetString(bytes, 0, numByte);
+            reply = processMessage(data);
+            this.sendMessage(con, reply);
         }
         public override string processMessage(String msg)
         {
