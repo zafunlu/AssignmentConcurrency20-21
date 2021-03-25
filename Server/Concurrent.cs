@@ -42,6 +42,12 @@ namespace Concurrent
                     workerThreads.Add(t);
                     if(this.numOfClients == this.settings.experimentNumberOfClients) {
                         int highestVotedValue = votesList.Values.Max();
+                        foreach (KeyValuePair<string, int> vote in votesList)
+                        {
+                            if(vote.Value == highestVotedValue) {
+                                Console.WriteLine("Executing command: " + vote.Key);
+                            }
+                        }
                     }
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
