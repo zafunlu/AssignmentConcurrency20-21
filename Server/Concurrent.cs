@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
+using System.Linq;
 //todo [Assignment]: add required namespaces
 
 namespace Concurrent
@@ -50,15 +51,23 @@ namespace Concurrent
             this.sendMessage(con, Message.ready);
             int numByte = con.Receive(bytes);
             data = Encoding.UTF8.GetString(bytes, 0, numByte);
-            if (!votesList.ContainsKey(data)) {
-                votesList.Add(data, 1);
-            }
-            else {
+            // if (!votesList.ContainsKey(data)) {
+            //     votesList.Add(data, 1);
+            // }
+            // else {
                 
+            // }
+            string vote = data.Substring(data.IndexOf('>') + 1);
+            bool added = votesList.TryAdd(vote, 1);
+            if(!added) {
+                votesList[vote] = votesList[vote] + 1;
             }
             reply = processMessage(data);
             this.sendMessage(con, reply);
-            Console.Out.WriteLine(votesList.Count);
+            
+            
+            Console.WriteLine(votesList[vote]);
+            Console.WriteLine(from x in votesList where x.Value == votesList.Max(v => v.Value) select x.Key);
         }
         public override string processMessage(String msg)
         {
