@@ -15,6 +15,7 @@ namespace Concurrent
         // todo [Assignment]: implement required attributes specific for concurrent server
         public List<Thread> workerThreads;
         public Dictionary<string, int> votesList;
+        private static Mutex mut = new Mutex();
         public ConcurrentServer(Setting settings) : base(settings)
         {
             // todo [Assignment]: implement required code
@@ -42,13 +43,18 @@ namespace Concurrent
                     workerThreads.Add(t);
                     if(this.numOfClients == this.settings.experimentNumberOfClients) {
                         int highestVotedValue = votesList.Values.Max();
+                        bool cmd_executed = false;
                         foreach (KeyValuePair<string, int> vote in votesList)
                         {
-                            if(vote.Value == highestVotedValue) {
+                            if(vote.Value == highestVotedValue && !cmd_executed) {
                                 Console.WriteLine("Executing command: " + vote.Key);
+                                cmd_executed = true;
                             }
                         }
                     }
+                    Console.WriteLine(t.ThreadState);
+                    t.Join();
+                    Console.WriteLine(t.ThreadState);
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
         }
@@ -63,9 +69,15 @@ namespace Concurrent
 
             string vote = data.Substring(data.IndexOf('>') + 1);
             bool added = votesList.TryAdd(vote, 1);
+
+            // Entering critical section
+            mut.WaitOne();
             if(!added) {
                 votesList[vote] = votesList[vote] + 1;
             }
+            mut.ReleaseMutex();
+            // Exiting critical section
+
             reply = processMessage(data);
             this.sendMessage(con, reply);
             
