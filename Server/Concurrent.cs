@@ -13,10 +13,12 @@ namespace Concurrent
     {
         // todo [Assignment]: implement required attributes specific for concurrent server
         public List<Thread> workerThreads;
+        public Dictionary<string, int> votesList;
         public ConcurrentServer(Setting settings) : base(settings)
         {
             // todo [Assignment]: implement required code
             workerThreads = new List<Thread>();
+            votesList = new Dictionary<string, int>();
         }
         public override void prepareServer()
         {
@@ -48,8 +50,15 @@ namespace Concurrent
             this.sendMessage(con, Message.ready);
             int numByte = con.Receive(bytes);
             data = Encoding.UTF8.GetString(bytes, 0, numByte);
+            if (!votesList.ContainsKey(data)) {
+                votesList.Add(data, 1);
+            }
+            else {
+                
+            }
             reply = processMessage(data);
             this.sendMessage(con, reply);
+            Console.Out.WriteLine(votesList.Count);
         }
         public override string processMessage(String msg)
         {
