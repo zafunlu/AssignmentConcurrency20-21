@@ -32,7 +32,7 @@ namespace Concurrent
                 listener.Bind(localEndPoint);
                 listener.Listen(settings.serverListeningQueue);
                 Console.WriteLine("Waiting for incoming connections ... ");
-                while (!(this.numOfClients == this.settings.experimentNumberOfClients))
+                while (this.numOfClients < this.settings.experimentNumberOfClients)
                 {
                     Socket connection = listener.Accept();
                     this.numOfClients++;
@@ -41,20 +41,18 @@ namespace Concurrent
                     });
                     t.Start();
                     workerThreads.Add(t);
-                    if(this.numOfClients == this.settings.experimentNumberOfClients) {
-                        int highestVotedValue = votesList.Values.Max();
-                        bool cmd_executed = false;
-                        foreach (KeyValuePair<string, int> vote in votesList)
-                        {
-                            if(vote.Value == highestVotedValue && !cmd_executed) {
-                                Console.WriteLine("Executing command: " + vote.Key);
-                                cmd_executed = true;
-                            }
-                        }
-                    }
                     Console.WriteLine(t.ThreadState);
                     t.Join();
                     Console.WriteLine(t.ThreadState);
+                }
+                int highestVotedValue = votesList.Values.Max();
+                bool cmd_executed = false;
+                foreach (KeyValuePair<string, int> vote in votesList)
+                {
+                    if(vote.Value == highestVotedValue && !cmd_executed) {
+                        Console.WriteLine("Executing command: " + vote.Key);
+                        cmd_executed = true;
+                    }
                 }
             }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
         }
