@@ -41,9 +41,7 @@ namespace Concurrent
                     });
                     t.Start();
                     workerThreads.Add(t);
-                    Console.WriteLine(t.ThreadState);
                     t.Join();
-                    Console.WriteLine(t.ThreadState);
                 }
                 int highestVotedValue = votesList.Values.Max();
                 bool cmd_executed = false;
