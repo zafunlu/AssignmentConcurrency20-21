@@ -54,7 +54,7 @@ namespace Concurrent
                 // }
                 var result = votesList.Where(a => a.Value == highestVotedValue).FirstOrDefault();
                 if(!result.Equals(default(KeyValuePair<string, int>))) { 
-                    Console.WriteLine("Executing command: " + result.Key); 
+                    Console.WriteLine("Executing command: " + result.Key);
                 }
 
             } catch (Exception e){ 
