@@ -44,15 +44,22 @@ namespace Concurrent
                     t.Join();
                 }
                 int highestVotedValue = votesList.Values.Max();
-                bool cmd_executed = false;
-                foreach (KeyValuePair<string, int> vote in votesList)
-                {
-                    if(vote.Value == highestVotedValue && !cmd_executed) {
-                        Console.WriteLine("Executing command: " + vote.Key);
-                        cmd_executed = true;
-                    }
+                // bool cmd_executed = false;
+                // foreach (KeyValuePair<string, int> vote in votesList)
+                // {
+                //     if(vote.Value == highestVotedValue && !cmd_executed) {
+                //         Console.WriteLine("Executing command: " + vote.Key);
+                //         cmd_executed = true;
+                //     }
+                // }
+                var result = votesList.Where(a => a.Value == highestVotedValue).FirstOrDefault();
+                if(!result.Equals(default(KeyValuePair<string, int>))) { 
+                    Console.WriteLine("Executing command: " + result.Key); 
                 }
-            }catch (Exception e){ Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); }
+
+            } catch (Exception e){ 
+                Console.Out.WriteLine("[Server] Preparation: {0}",e.Message); 
+            }
         }
         new public void handleClient(Socket con)
         {
@@ -73,7 +80,6 @@ namespace Concurrent
             }
             mut.ReleaseMutex();
             // Exiting critical section
-
             reply = processMessage(data);
             this.sendMessage(con, reply);
             
